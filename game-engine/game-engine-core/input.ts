@@ -10,9 +10,9 @@ export interface Input {
     getButton(button: string): boolean;
     /**
      * Returns the direction of an axis
-     * @param button 
+     * @param axis
      */
-    getAxis(button: string): Vector2D;
+    getAxis(axis: string): Vector2D;
 
 }
 
