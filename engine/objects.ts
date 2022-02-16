@@ -7,9 +7,27 @@ export interface UpdateEvent {
     input: Input;
 }
 
-class ObjectComponent {
+export class ObjectComponent {
+
+    private obj: GameObject = null;
+
+    init(obj: GameObject) {
+        if (this.obj) {
+            throw "Component already initialized";
+        }
+        this.obj = obj;
+    }
+
+    update(level: Level, event: UpdateEvent) {
+
+    }
+
+    render(renderer: Renderer) {
+
+    }
 
 }
+
 
 
 export class GameObject {
