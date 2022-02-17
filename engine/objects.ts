@@ -1,6 +1,7 @@
 import { Input } from "./input";
 import { Level } from "./level";
 import { Renderer } from "./rendering";
+import { Vector3D } from "./util";
 
 export interface UpdateEvent {
     time: number;
@@ -18,7 +19,7 @@ export class ObjectComponent {
         this.obj = obj;
     }
 
-    update(level: Level, event: UpdateEvent) {
+    update(event: UpdateEvent) {
 
     }
 
@@ -28,19 +29,17 @@ export class ObjectComponent {
 
 }
 
-
-
 export class GameObject {
 
-    private xPos = 0.0;
-    private yPos = 0.0;
-    private zPos = 0.0;
+    public position: Vector3D = {x: 0, y: 0, z: 0};
+    public rotation: Vector3D = {x: 0, y: 0, z: 0};
+    private _level: Level;
 
     constructor() {
 
     }
 
-    update(level: Level, event: UpdateEvent) {
+    update(event: UpdateEvent) {
 
     }
 
@@ -48,28 +47,15 @@ export class GameObject {
 
     }
 
-    get x() {
-        return this.xPos;
+    init(level: Level) {
+        if (this._level) {
+            throw "Object already initialized";
+        }
+        this._level = level;
     }
 
-    set x(val) {
-        this.xPos = val;
-    }
-
-    get y() {
-        return this.yPos;
-    }
-
-    set y(val) {
-        this.yPos = val;
-    }
-
-    get z() {
-        return this.zPos;
-    }
-
-    set z(val) {
-        this.zPos = val;
+    get level() {
+        return this._l;
     }
 
 }
